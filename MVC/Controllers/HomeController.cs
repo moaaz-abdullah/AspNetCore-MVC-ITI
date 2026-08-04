@@ -6,6 +6,13 @@ namespace MVC.Controllers
 {
     public class HomeController : Controller
     {
+
+        //Home/ShowMix?id=1&name=ahmed
+        public IActionResult ShowMix(int id, string name)
+        {
+            return id % 2 == 0 ? View("View1") : Content("Hello");
+        }
+
         public IActionResult Index()
         {
             return View();
