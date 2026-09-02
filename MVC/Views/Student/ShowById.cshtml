@@ -1,5 +1,17 @@
 ﻿@model Student
-
-<h2>@Model.Name</h2>
-<p>ID: @Model.Id</p>
-<p>Image: <img src="/Images/@Model.ImageUrl" alt="@Model.Name" style="width: 80px; height: auto;" /></p>
+<table class="table table-bordered table-hover align-middle text-center">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.Id</td>
+            <td><img src="/Images/@Model.ImageUrl" alt="@Model.Name" style="width: 80px; height: auto;" /></td>
+        </tr>
+    </tbody>
+</table>
