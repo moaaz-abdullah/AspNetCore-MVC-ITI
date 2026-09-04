@@ -14,7 +14,7 @@ namespace MVC.Models
 
         public string ImgURL { get; set; }
 
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         [ForeignKey("Department")]
         public int DepartmentID { get; set; }
