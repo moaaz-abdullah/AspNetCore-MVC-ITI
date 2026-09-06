@@ -14,7 +14,7 @@ namespace MVC.Controllers
             branches.Add("Branch 2");
 
             ViewData["Message"] = "Employee Message";
-            ViewData["Temp"] = 50
+            ViewData["Temp"] = 50;
             ViewData["Branches"] = branches;
 
             Employee employeeModel = context.Employee.FirstOrDefault(e => e.ID == ID);
