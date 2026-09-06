@@ -7,6 +7,11 @@ namespace MVC.Controllers
     {
         ITIContext context = new ITIContext();
 
+        public EmployeeController()
+        {
+
+        }
+
         public IActionResult Details(int ID)
         {
             List<String> branches = new List<String>();
@@ -14,8 +19,10 @@ namespace MVC.Controllers
             branches.Add("Branch 2");
 
             ViewData["Message"] = "Employee Message";
-            ViewData["Temp"] = 50;
             ViewData["Branches"] = branches;
+
+            ViewBag.Temp = 50;
+            ViewBag.Color = "Red";
 
             Employee employeeModel = context.Employee.FirstOrDefault(e => e.ID == ID);
             return View("Details", employeeModel);
