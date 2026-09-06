@@ -1,7 +1,40 @@
-﻿@model MVC.ViewModel.EmployeeDebtColorTempVM
+﻿@model EmployeeDebtColorTempVM
 
 @{
     ViewData["Title"] = "Employee DetailsVM";
 }
 
 <h1>@ViewData["Title"]</h1>
+
+<div>
+    <br />
+    <h4>Employee Details</h4>
+
+    <dl class="row">
+        <dt class="col-sm-2">Employee Name</dt>
+        <dd class="col-sm-10">@Model.EmpName</dd>
+
+        <dt class="col-sm-2">Department</dt>
+        <dd class="col-sm-10">@Model.DeptName</dd>
+
+        <dt class="col-sm-2">Temperature</dt>
+        <dd class="col-sm-10">@Model.Temp</dd>
+
+        <dt class="col-sm-2">Message</dt>
+        <dd class="col-sm-10">@Model.Message</dd>
+
+        <dt class="col-sm-2">Color</dt>
+        <dd class="col-sm-10" style="color:@Model.Color;">@Model.Color</dd>
+
+        <dt class="col-sm-2">Branches</dt>
+        <dd class="col-sm-10">
+            <select>
+                @foreach (var branch in Model.Branches)
+                {
+                    <option>@branch</option>
+                }
+            </select>
+        </dd>
+
+    </dl>
+</div>
