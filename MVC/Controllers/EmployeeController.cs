@@ -9,15 +9,12 @@ namespace MVC.Controllers
 
         public IActionResult Details(int ID)
         {
-            string msg = "Employee Message";
-            int temp = 50;
-
             List<String> branches = new List<String>();
             branches.Add("Branch 1");
             branches.Add("Branch 2");
 
-            ViewData["Message"] = msg;
-            ViewData["Temp"] = temp;
+            ViewData["Message"] = "Employee Message";
+            ViewData["Temp"] = 50
             ViewData["Branches"] = branches;
 
             Employee employeeModel = context.Employee.FirstOrDefault(e => e.ID == ID);

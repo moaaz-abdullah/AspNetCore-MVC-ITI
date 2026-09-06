@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Employee Details";
-}
+}   
 
 <h1>@ViewData["Title"]</h1>
 <br />
@@ -11,6 +11,7 @@
 <h2>@ViewData["Message"]</h2>
 <h2>@(int.Parse(ViewData["Temp"].ToString()) - 10)</h2>
 <h2>@(string.Join(" - ", ViewData["Branches"] as IEnumerable<string>))</h2>
+
 @*
 <h2>
     @foreach (var branch in ViewData["Branches"] as IEnumerable<string>)
