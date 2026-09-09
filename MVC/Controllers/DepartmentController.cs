@@ -28,5 +28,18 @@ namespace MVC.Controllers
             }
             return View("Create", department);
         }
+
+        public IActionResult Delete(int id)
+        {
+            var department = context.Department.Find(id);
+
+            if (department != null)
+            {
+                context.Department.Remove(department);
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
