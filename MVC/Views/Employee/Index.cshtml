@@ -38,6 +38,7 @@
                             <th>Name</th>
                             <th>Salary</th>
                             <th>Department</th>
+                            <th>Image</th>
                             <th width="250">Actions</th>
                         </tr>
                     </thead>
@@ -53,6 +54,13 @@
 
                                 <td>
                                     @(employee.Department?.Name ?? "No Department")
+                                </td>
+
+                                <td>
+                                    <img src="~/images/@employee.ImgURL"
+                                         alt="@employee.Name"
+                                         class="img-thumbnail"
+                                         style="width:70px; height:70px; object-fit:cover;" />
                                 </td>
 
                                 <td>

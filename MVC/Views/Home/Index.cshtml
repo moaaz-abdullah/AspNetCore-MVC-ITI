@@ -1,8 +1,70 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+
+    <div class="text-center">
+
+        <h1 class="display-4 fw-bold text-primary">
+            Welcome to Employee Management System
+        </h1>
+
+        <p class="lead text-muted mt-3">
+            Manage Employees, Departments, and Business Operations efficiently.
+        </p>
+
+        <div class="mt-4">
+            <a asp-controller="Employee"
+               asp-action="Index"
+               class="btn btn-primary btn-lg me-2">
+                Employees
+            </a>
+
+            <a asp-controller="Department"
+               asp-action="Index"
+               class="btn btn-outline-primary btn-lg">
+                Departments
+            </a>
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h4>Employees</h4>
+                    <p class="text-muted">
+                        View, create, update, and manage employee records.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h4>Departments</h4>
+                    <p class="text-muted">
+                        Organize employees into departments and teams.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h4>Reports</h4>
+                    <p class="text-muted">
+                        Monitor company data and generate reports.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
