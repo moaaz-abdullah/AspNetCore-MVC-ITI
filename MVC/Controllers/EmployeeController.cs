@@ -49,5 +49,11 @@ namespace MVC.Controllers
 
             return View("DetailsVM", employeeViewModel);
         }
+
+        public IActionResult Index()
+        {
+            List<Employee> employees = context.Employee.Include(e => e.Department).ToList();
+            return View("Index", employees);
+        }
     }
 }

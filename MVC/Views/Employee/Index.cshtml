@@ -1,0 +1,98 @@
+﻿@model List<Employee>
+
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Employees</h2>
+
+        <a asp-action="Create"
+           asp-controller="Employee"
+           class="btn btn-primary">
+            Create New Employee
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            Employee List
+        </div>
+
+        <div class="card-body">
+
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info">
+                    No employees found.
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Salary</th>
+                            <th>Department</th>
+                            <th width="250">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var employee in Model)
+                        {
+                            <tr>
+                                <td>@employee.ID</td>
+                                <td>@employee.Name</td>
+                                <td>@employee.Salary</td>
+
+                                <td>
+                                    @(employee.Department?.Name ?? "No Department")
+                                </td>
+
+                                <td>
+
+                                    <a asp-action="Details"
+                                       asp-route-id="@employee.ID"
+                                       class="btn btn-info btn-sm">
+                                        Details
+                                    </a>
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@employee.ID"
+                                       class="btn btn-warning btn-sm">
+                                        Edit
+                                    </a>
+
+                                    <form asp-action="Delete"
+                                          asp-route-id="@employee.ID"
+                                          method="post"
+                                          style="display:inline">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <button type="submit"
+                                                class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure you want to delete this employee?')">
+                                            Delete
+                                        </button>
+
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            }
+
+        </div>
+    </div>
+
+</div>

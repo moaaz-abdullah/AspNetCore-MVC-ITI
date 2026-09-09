@@ -4,29 +4,61 @@
     ViewData["Title"] = "Employee Details";
 }
 
-<h1>@ViewData["Title"]</h1>
-<br />
+<div class="container mt-4">
 
-<h2 style="color: @ViewBag.Color">@Model.Name</h2>
-<h2>@ViewData["Message"]</h2>
-<h2>@(ViewBag.Temp - 10)</h2>
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Employee Details</h3>
+        </div>
 
-<h2>
-    <select>
-        @foreach (var branch in ViewData["Branches"] as IEnumerable<string>)
-        {
-            <option>@branch</option>
-        }
-    </select>
+        <div class="card-body">
 
-</h2>
+            <div class="mb-3">
+                <label class="fw-bold">Name</label>
+                <div style="color:@ViewBag.Color">
+                    @Model.Name
+                </div>
+            </div>
 
-@* <h2>@(string.Join(" - ", ViewData["Branches"] as IEnumerable<string>))</h2> *@
-@*
-<h2>
-    @foreach (var branch in ViewData["Branches"] as IEnumerable<string>)
-    {
-        @branch
-        <br />
-    }
-</h2> *@
+            <div class="mb-3">
+                <label class="fw-bold">Message</label>
+                <div>
+                    @ViewData["Message"]
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-bold">Temperature</label>
+                <div>
+                    @(Convert.ToInt32(ViewBag.Temp) - 10)
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="fw-bold">Branches</label>
+
+                <select class="form-select">
+                    @{
+                        var branches = ViewData["Branches"] as IEnumerable<string>;
+                    }
+
+                    @if (branches != null)
+                    {
+                        foreach (var branch in branches)
+                        {
+                            <option>@branch</option>
+                        }
+                    }
+                </select>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <a href="/Employee/Index" class="btn btn-secondary">
+                Back
+            </a>
+        </div>
+    </div>
+
+</div>
