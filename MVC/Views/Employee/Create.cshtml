@@ -1,0 +1,135 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Create New Employee</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create"
+                  asp-controller="Employee"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label">
+                        Employee Name
+                    </label>
+
+                    <input asp-for="Name"
+                           class="form-control"
+                           placeholder="Enter employee name" />
+
+                    <span asp-validation-for="Name"
+                          class="text-danger">
+                    </span>
+                </div>
+
+
+                <!-- Salary -->
+                <div class="mb-3">
+                    <label asp-for="Salary" class="form-label">
+                        Salary
+                    </label>
+
+                    <input asp-for="Salary"
+                           type="number"
+                           class="form-control"
+                           placeholder="Enter salary" />
+
+                    <span asp-validation-for="Salary"
+                          class="text-danger">
+                    </span>
+                </div>
+
+
+                <!-- Department -->
+                <div class="mb-3">
+
+                    <label asp-for="DepartmentID"
+                           class="form-label">
+                        Department
+                    </label>
+
+                    <select asp-for="DepartmentID"
+                            class="form-select">
+
+                        <option value="">
+                            -- Select Department --
+                        </option>
+
+                        @foreach (var department in ViewBag.Departments)
+                        {
+                            <option value="@department.ID">
+                                @department.Name
+                            </option>
+                        }
+
+                    </select>
+
+                    <span asp-validation-for="DepartmentID"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <!-- Image -->
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Employee Image
+                    </label>
+
+                    <input type="file"
+                           name="image"
+                           class="form-control"
+                           accept="image/*" />
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="mt-4">
+
+                    <button type="submit"
+                            class="btn btn-success">
+                        <i class="bi bi-plus-circle"></i>
+                        Add Employee
+                    </button>
+
+                    <a asp-action="Index"
+                       class="btn btn-secondary">
+                        Cancel
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
