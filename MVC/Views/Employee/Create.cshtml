@@ -59,7 +59,7 @@
 
 
                 <!-- Department -->
-                <div class="mb-3">
+                <!--     <div class="mb-3">
 
                     <label asp-for="DepartmentID"
                            class="form-label">
@@ -73,22 +73,20 @@
                             -- Select Department --
                         </option>
 
-                        @foreach (var department in ViewBag.Departments)
+                   @*      @foreach (var department in ViewBag.Departments)
                         {
                             <option value="@department.ID">
                                 @department.Name
                             </option>
                         }
-
+ *@
                     </select>
 
                     <span asp-validation-for="DepartmentID"
                           class="text-danger">
                     </span>
 
-                </div>
-
-
+                </div>-->
                 <!-- Image -->
                 <div class="mb-3">
 
@@ -97,6 +95,7 @@
                     </label>
 
                     <input type="file"
+                           asp-for="ImgURL"
                            name="image"
                            class="form-control"
                            accept="image/*" />

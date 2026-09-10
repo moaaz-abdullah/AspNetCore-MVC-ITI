@@ -67,7 +67,7 @@ namespace MVC.Controllers
             return View("Index", employees);
         }
 
-        // GET: Employee/Edit/5
+        // GET: Employee/Edit/ID
         [HttpGet]
         public IActionResult Edit(int ID)
         {
@@ -101,6 +101,32 @@ namespace MVC.Controllers
 
             context.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
+
+        // handle create new employee
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View("Create");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddNewEmployee(Employee employee)
+        {
+            Employee newEmployee = new Employee
+            {
+                Name = employee.Name,
+                Salary = employee.Salary,
+                ImgURL = "/Images/batman.webp",
+                JobTitle = "FullStack Developer",
+                Address = "Cairo, Egypt",
+                DepartmentID = 2
+            };
+
+            context.Employee.Add(newEmployee);
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
