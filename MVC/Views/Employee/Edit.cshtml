@@ -6,12 +6,18 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<form method="post" asp-action="Update" asp-controller="Employee">
+<form asp-controller="Employee"
+      asp-action="Update"
+      method="post">
+
+    @Html.AntiForgeryToken()
 
     <input type="hidden" asp-for="ID" />
+    <input type="hidden" asp-for="DepartmentID" />
 
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Name</label>
+
         <input asp-for="Name"
                class="form-control"
                placeholder="Enter employee name" />
@@ -20,8 +26,9 @@
               class="text-danger"></span>
     </div>
 
-    <div class="mb-4">
+    <div class="mb-3">
         <label asp-for="Salary" class="form-label">Salary</label>
+
         <input asp-for="Salary"
                type="number"
                class="form-control"
@@ -31,8 +38,9 @@
               class="text-danger"></span>
     </div>
 
-    <div class="mb-4">
+    <div class="mb-3">
         <label asp-for="ImgURL" class="form-label">Image URL</label>
+
         <input asp-for="ImgURL"
                class="form-control"
                placeholder="Enter employee image URL" />
@@ -41,8 +49,9 @@
               class="text-danger"></span>
     </div>
 
-    <div class="mb-4">
+    <div class="mb-3">
         <label asp-for="JobTitle" class="form-label">Job Title</label>
+
         <input asp-for="JobTitle"
                class="form-control"
                placeholder="Enter employee job title" />
@@ -64,4 +73,5 @@
         </a>
 
     </div>
+
 </form>

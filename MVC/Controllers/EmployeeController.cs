@@ -69,6 +69,9 @@ namespace MVC.Controllers
 
         // GET: Employee/Edit/5
         [HttpGet]
+
+        // GET: Employee/Edit/5
+        [HttpGet]
         public IActionResult Edit(int ID)
         {
             Employee employeeModel = context.Employee
@@ -82,15 +85,10 @@ namespace MVC.Controllers
             return View("Edit", employeeModel);
         }
 
-        // POST: Employee/Update
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update(Employee employee)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("Edit", employee);
-            }
-
             Employee existingEmployee = context.Employee
                 .FirstOrDefault(e => e.ID == employee.ID);
 
@@ -101,8 +99,8 @@ namespace MVC.Controllers
 
             existingEmployee.Name = employee.Name;
             existingEmployee.Salary = employee.Salary;
-            existingEmployee.ImgURL = employee.ImgURL;
             existingEmployee.JobTitle = employee.JobTitle;
+            existingEmployee.ImgURL = employee.ImgURL;
 
             context.SaveChanges();
 
