@@ -69,9 +69,6 @@ namespace MVC.Controllers
 
         // GET: Employee/Edit/5
         [HttpGet]
-
-        // GET: Employee/Edit/5
-        [HttpGet]
         public IActionResult Edit(int ID)
         {
             Employee employeeModel = context.Employee
