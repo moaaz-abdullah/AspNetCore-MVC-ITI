@@ -13,11 +13,13 @@ namespace MVC.Controllers
             return View("Index", departments);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View("Create");
         }
 
+        [HttpPost]
         public IActionResult Save(Department department)
         {
             if (department.Name != null && department.ManagerName != null)

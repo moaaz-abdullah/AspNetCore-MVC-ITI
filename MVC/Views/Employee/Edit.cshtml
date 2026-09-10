@@ -1,0 +1,67 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post" asp-action="Update" asp-controller="Employee">
+
+    <input type="hidden" asp-for="ID" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Name</label>
+        <input asp-for="Name"
+               class="form-control"
+               placeholder="Enter employee name" />
+
+        <span asp-validation-for="Name"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-4">
+        <label asp-for="Salary" class="form-label">Salary</label>
+        <input asp-for="Salary"
+               type="number"
+               class="form-control"
+               placeholder="Enter employee salary" />
+
+        <span asp-validation-for="Salary"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-4">
+        <label asp-for="ImgURL" class="form-label">Image URL</label>
+        <input asp-for="ImgURL"
+               class="form-control"
+               placeholder="Enter employee image URL" />
+
+        <span asp-validation-for="ImgURL"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-4">
+        <label asp-for="JobTitle" class="form-label">Job Title</label>
+        <input asp-for="JobTitle"
+               class="form-control"
+               placeholder="Enter employee job title" />
+
+        <span asp-validation-for="JobTitle"
+              class="text-danger"></span>
+    </div>
+
+    <div class="d-flex gap-2">
+
+        <button type="submit" class="btn btn-primary">
+            Update Employee
+        </button>
+
+        <a asp-controller="Employee"
+           asp-action="Index"
+           class="btn btn-outline-secondary">
+            Back to List
+        </a>
+
+    </div>
+</form>
